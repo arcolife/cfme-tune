@@ -1,4 +1,4 @@
-# cfme-performance git ignored files
+# cfme-tune git ignored files
 # Ansible files
 *.retry
 
@@ -6,28 +6,28 @@
 # Ignore local copies of files that require configuration:
 
 # ssh-config file
-ansible/ssh-config.local
+ansible-playbooks/ssh-config.local
 
 # inventory file
-ansible/hosts.local
+ansible-playbooks/hosts.local
 
 # group_vars/all.local.yml file
-ansible/group_vars/all.local.yml
+ansible-playbooks/group_vars/all.local.yml
 
 # group_vars/create_appliances.local.yml file
-ansible/group_vars/create_appliances.local.yml
+ansible-playbooks/group_vars/create_appliances.local.yml
 
 # Performance Tests yaml config files
-!cfme-performance/conf/*.yml
-cfme-performance/conf/*.local.yml
-cfme-performance/conf/*.local.*.yml
+!cfme-tune/conf/*.yml
+ansible-playbooks/*.local.yml
+ansible-playbooks/*.local.*.yml
 
 # Log Files
-cfme-performance/log/*.log
+cfme-tune/log/*.log
 
 # Virtual Environment
-.cfme_performance
-.cfme-performance
+.cfme_tune
+.cfme-tune
 .cfme_perf
 # Python files
 *.py[cod]
