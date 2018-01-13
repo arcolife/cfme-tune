@@ -60,6 +60,9 @@ Each entry under appliances must match an entry in your ansible inventory file (
 
 **WIP** - These playbooks will automate adding a provider, configuring roles, and configuring advanced settings on the appliance.  It will also include some basic workloads such as queuing a refresh, provisioning, smart state analysis, etc...
 
+```
+ansible-playbook -i hosts.local -f 7 metrics/run_health_check.yml  -v
+```
 
 ## Which playbooks should I use?
 

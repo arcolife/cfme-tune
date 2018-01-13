@@ -13,7 +13,7 @@
   ignore_errors: true
   register: validation
 
-- name: [ perf_capture ] health check queue length
+- name: perf_capture health check queue length
   shell: |
     grep 'perf_capture_health_check' /var/www/miq/vmdb/log/evm.log
 
@@ -28,11 +28,11 @@
     grep 'count for state=\["ready"\]' /var/www/miq/vmdb/log/evm.log \
       | egrep -o "\"ems_metrics_collector\"=>[[:digit:]]+" | tail -n 3
 
-- name: [evm:status] for single node
+- name: evm:status for single node
   shell: |
     ps -f --ppid $(ps -ef | grep 'MIQ Server' | grep -v grep | awk '{print $2}')
 
-- name: [evm:status] for all appliances in multi appliance environment
+- name: evm:status for all appliances in multi appliance environment
   shell: |
     cd /var/www/miq/vmdb; rake evm:status_full
 

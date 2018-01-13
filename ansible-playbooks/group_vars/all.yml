@@ -1,0 +1,36 @@
+---
+###############################
+# Upload/Deploy Template
+###############################
+rhevm_host: performance-testing-domain.com
+rhevm_username: admin@internal
+rhevm_password: smartvm
+export_datastore: export
+
+########################################
+# Monitor Host Configuration
+########################################
+# Carbon/Graphite:
+carbon_host: 1.1.1.1
+graphite_port: 9000
+graphite_username: root
+graphite_password: calvin
+
+# Statsd Client(On appliance) connects to statsd_host (Typically Monitor Host)
+statsd_host: "{{carbon_host}}"
+
+# Grafana:
+grafana_host: "{{carbon_host}}"
+grafana_port: 9001
+grafana_username: admin
+grafana_password: admin
+
+# Collectd:
+carbon_host_prefix: carbon
+
+# Collectd applies to all Hosts (MonitorHost/CFME/ManageIQ)
+collectd_interval: 10
+
+# fixes user priviliges issue on dbdump
+pchown_script: https://raw.githubusercontent.com/kbrock/bin/master/pchown
+# pkillall_script: https://raw.githubusercontent.com/kbrock/bin/master/pkillall
