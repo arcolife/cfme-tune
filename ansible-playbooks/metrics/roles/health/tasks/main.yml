@@ -4,7 +4,7 @@
 # Refer to https://github.com/redhat-performance/cfme-performance for more on that.
 #
 
-- name: Check validate worker output
+- name: Check validate worker output on "{{inventory_hostname}}"
   shell: |
     cd /var/www/miq/vmdb/log && \
        egrep 'MiqServer#validate_worker.*exceeded limit' evm.log \
@@ -12,7 +12,7 @@
         | sort | uniq
   ignore_errors: true
   register: validation
-
+  
 - name: perf_capture health check queue length
   shell: |
     grep 'perf_capture_health_check' /var/www/miq/vmdb/log/evm.log
@@ -35,7 +35,8 @@
 - name: evm:status for all appliances in multi appliance environment
   shell: |
     cd /var/www/miq/vmdb; rake evm:status_full
-
+  when: "{{ inventory_hostname | search('(master)') }}"
+  
 ########
 
 - name: count for state ems_metrics_collector
